@@ -1,4 +1,4 @@
-package com.iccom.p2p;
+package com.iccom.topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTextMessage;
@@ -15,7 +15,7 @@ import static javax.jms.Session.AUTO_ACKNOWLEDGE;
 public class Provider {
 
     private static final String URL = "tcp://127.0.0.1:61616";
-    private static final String QUEUE_NAME = "testQueue";
+    private static final String TOPIC_NAME = "testTopic";
 
     public void sendMsg() throws JMSException {
         // 获得连接工厂，由JMS规范提供
@@ -31,14 +31,14 @@ public class Provider {
         Session session = connection.createSession(false, AUTO_ACKNOWLEDGE);
 
         // 创建目标
-        Destination destination = session.createQueue(QUEUE_NAME);
+        Destination destination = session.createTopic(TOPIC_NAME);
 
         // 生产者
         MessageProducer messageProducer = session.createProducer(destination);
 
         for (int i = 0; i < 50; i++) {
             TextMessage textMessage = new ActiveMQTextMessage();
-            String str = "消息为：test" + i;
+            String str = "消息为：test444" + i;
             textMessage.setText(str);
             System.out.println("发送的队列" + str);
             messageProducer.send(textMessage);
