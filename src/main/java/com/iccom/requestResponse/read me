@@ -1,0 +1,11 @@
+request-response模式：
+    请求-应答模式：
+        Requestor -》 Queue -》 Receiver -》 Queue -》Requestor
+
+    这里的代码除了初始化构造函数里的参数还同时设置了两个destination，一个是自己要发送消息出去的destination，
+    在session.createProducer(adminQueue);这一句设置。另外一个是自己要接收的消息destination,
+    通过Destination tempDest = session.createTemporaryQueue(); responseConsumer = session.createConsumer(tempDest);
+    这两句指定了要接收消息的目的地。这里是用的一个临时队列。在前面指定了返回消息的通信队列之后，我们需要通知server端知道发送返回消息给哪个队列。
+    于是txtMessage.setJMSReplyTo(tempDest);指定了这一部分，同时txtMessage.setJMSCorrelationID(correlationId);
+    方法主要是为了保证每次发送回来请求的server端能够知道对应的是哪个请求。
+    这里一个请求和一个应答是相当于对应一个相同的序列号一样。

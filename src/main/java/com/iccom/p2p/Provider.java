@@ -33,7 +33,7 @@ public class Provider {
         // 创建目标
         Destination destination = session.createQueue(QUEUE_NAME);
 
-        // 生产者
+        // 生产者， 这里参数可以为null， 在发送的时候messageProducer.send(destination, textMessage);
         MessageProducer messageProducer = session.createProducer(destination);
 
         for (int i = 0; i < 50; i++) {

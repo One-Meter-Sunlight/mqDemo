@@ -38,7 +38,7 @@ public class Provider {
 
         for (int i = 0; i < 50; i++) {
             TextMessage textMessage = new ActiveMQTextMessage();
-            String str = "消息为：test444" + i;
+            String str = "消息为：test" + i;
             textMessage.setText(str);
             System.out.println("发送的队列" + str);
             messageProducer.send(textMessage);

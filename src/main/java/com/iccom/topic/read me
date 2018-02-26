@@ -2,6 +2,7 @@ topic模式：
     发布订阅者模式，可以有多个发布者，也可以有多个订阅者
     但是：订阅者只能收到当前订阅者启动之后的消息，启动之前的消息是不能接收到的
     消息不删除永远都会在ActiveMQ的topic中
+    方向：单向
 
     private static final String URL = "tcp://127.0.0.1:61616";
         private static final String TOPIC_NAME = "testTopic";

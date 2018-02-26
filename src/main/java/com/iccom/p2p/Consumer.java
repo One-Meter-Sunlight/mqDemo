@@ -1,7 +1,6 @@
 package com.iccom.p2p;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.command.ActiveMQTextMessage;
 
 import javax.jms.*;
 

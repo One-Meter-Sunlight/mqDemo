@@ -2,6 +2,7 @@ p2p模式：
     Queue消息队列，类似打电话，生产者和消费者共享一条链路，如果有多个消费者，则同时消费队列中的消息，总数量不变，
     默认是轮询
     消息消费完成之后，ActiveMQ的queue中就没有了
+    方向：单向
 
     private static final String URL = "tcp://127.0.0.1:61616";
     private static final String QUEUE_NAME = "testQueue";
