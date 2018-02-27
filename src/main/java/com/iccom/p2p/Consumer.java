@@ -12,6 +12,7 @@ import static javax.jms.Session.AUTO_ACKNOWLEDGE;
  * Create by CK on 2018/2/26 10:12
  */
 public class Consumer {
+
     private static final String URL = "tcp://127.0.0.1:61616";
     private static final String QUEUE_NAME = "testQueue";
 
@@ -33,6 +34,8 @@ public class Consumer {
 
         // 接收消息, 异步监听，这里不能关闭连接
         MessageConsumer messageConsumer = session.createConsumer(destination);
+
+        // messageConsumer.receive(1000); 同步接收消息
         messageConsumer.setMessageListener(new MessageListener() {
             public void onMessage(Message message) {
                 TextMessage textMessage = (TextMessage) message;

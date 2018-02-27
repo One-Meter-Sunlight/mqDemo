@@ -1,6 +1,7 @@
 package com.iccom.p2p;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQMapMessage;
 import org.apache.activemq.command.ActiveMQTextMessage;
 
 import javax.jms.*;
@@ -43,6 +44,10 @@ public class Provider {
             System.out.println("发送的队列" + str);
             messageProducer.send(textMessage);
         }
+        /*MapMessage mapMessage = session.createMapMessage();
+        mapMessage.setBoolean("secend", true);
+        messageProducer.send(mapMessage);
+        System.out.println("发送的消息为：" + mapMessage.toString());*/
 
         // 关闭连接
         connection.close();
